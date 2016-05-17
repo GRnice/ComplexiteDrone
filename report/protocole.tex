@@ -1,0 +1,136 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{tkz-graph}
+\usepackage{multirow}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\usepackage{tikz}
+\usetikzlibrary{arrows,calc,positioning}
+\tikzstyle{intt}=[draw,text centered,minimum size=6em,text width=5.25cm,text height=0.34cm]
+\tikzstyle{intl}=[draw,text centered,minimum size=2em,text width=2.75cm,text height=0.34cm]
+\tikzstyle{int}=[draw,minimum size=2.5em,text centered,text width=3.5cm]
+\tikzstyle{intg}=[draw,minimum size=3em,text centered,text width=6.cm]
+\tikzstyle{sum}=[draw,shape=circle,inner sep=2pt,text centered,node distance=3.5cm]
+\tikzstyle{summ}=[drawshape=circle,inner sep=4pt,text centered,node distance=3.cm]
+
+\title{%
+        Protocole de déplacement pour robots à base d'Arduino\\
+        \large Complexité
+}
+\author{%
+        M1 IFI/RIF
+}
+
+
+\begin{document}
+\maketitle
+
+%\tableofcontents
+\begin{abstract}
+        Ce document décrit le protocole conçu pour contrôler la formation et le déplacement des robots à base d'Arduino crées durant le cours de complexité.
+\end{abstract}
+
+\newpage
+
+\section{Protocole}\label{protocole}
+\subsection{Initialisation}
+La phase d'initialisation, à l'allumage des robots, se déroule en trois étapes :
+\begin{itemize}
+        \item Tirage d'un identifiant unique ;
+        \item Demander s'il existe déjà un chef, s'il n'y en a pas, le robot se considère comme étant le chef ;
+        \item Envoyer son identifiant unique au chef ;
+        \item \textit{Facultatif} : Vérifier s'il existe plusieurs chefs, si oui celui avec l'identifiant le plus grand garde son statut de chef.
+\end{itemize}
+Pour finir le chef envoie à chaque robot une paire de nombres composée de l'identifiant du robot et de sa position dans la formation.
+\subsection{Formation}
+Les robots se positionnent en triangle, avec le chef en tête et deux esclaves derrière lui.\\
+Chaque esclave est suivit par deux esclaves jusqu'à la fin de la formation.\\
+Les robots sont séparés par une distance de $50 \pm 10\%$ cm.
+\begin{figure}[!h]
+        \centering
+        \begin{tikzpicture}
+                \GraphInit[vstyle=Empty]
+                \Vertex[x=1, y=-2]{C}
+                \Vertex[x=0,y=-3]{E1}
+                \Vertex[x=2,y=-3]{E2}
+                \Vertex[x=-1,y=-4]{E3}
+                \Vertex[x=1,y=-4]{E4}
+                \Vertex[x=3,y=-4]{E5}
+                \Vertex[x=-2,y=-5]{E6}
+                \Vertex[x=0,y=-5]{E7}
+                \Vertex[x=2,y=-5]{E8}
+                \Vertex[x=4,y=-5]{E9}
+                \Edges(E1,C,E2)
+                \Edges(E3,E1,E4,E2,E5)
+                \Edges(E6,E3,E7,E4,E8,E5,E9)
+        \end{tikzpicture}
+        \caption{Formation avec dix robots}\label{fig:Form}
+\end{figure}
+
+\subsection{Mouvement}
+Lors du déplacement, le robot avec le rôle de chef respecte les conditions suivantes :
+\begin{itemize}
+        \item Avancer en ligne droite ;
+        \item S'il détecte un obstacle, l'éviter ;
+        \item Communiquer ses déplacements aux autres robots.
+\end{itemize}
+Le reste des robots obéissent aux règles ci-dessous :
+\begin{itemize}
+        \item Écouter les ordres de déplacements du chef ;
+        \item Avancer en fonction de l'ordre reçu et de leur position dans la formation
+\end{itemize}
+
+\begin{figure}[!h]
+        \centering
+        \begin{tabular}{|M{1cm}|M{1cm}|lll}
+                \cline{1-2}
+                0 & 0 &  &  &  \\ \cline{1-2}
+                1 & len &  &  &  \\ \cline{1-2}
+                \multicolumn{2}{|c|}{CRC} &  &  &  \\ \cline{1-2}
+                \multicolumn{2}{|c|}{\multirow{2}{*}{...}} &  &  &  \\
+                \multicolumn{2}{|c|}{} &  &  &  \\ \cline{1-2}
+                end & end &  &  &  \\ \cline{1-2}
+        \end{tabular}
+        \caption{Modèle de message}\label{fig:Mesg}
+\end{figure}
+
+\begin{figure}[!h]
+        \centering
+        \begin{tikzpicture}[
+                >=latex',
+                auto
+                ]
+                \node [intg] (kp)  {chef};
+                \node [int]  (ki1) [node distance=1.5cm and -1cm,below left=of kp] {Id};
+                \node [int]  (ki11) [node distance=1.5cm and -1cm,below =of ki1] {UId};
+                \node [int]  (ki12) [node distance=1.5cm and -1cm,below =of ki11] {(UId,Num)};
+                \node [int]  (ki2) [node distance=1.5cm and -1cm,below right=of kp] {0};
+                \node [int]  (ki21) [node distance=1.5cm and -1cm,below=of ki2] {chef};
+                \node [int]  (ki22) [node distance=1.5cm and -1cm,below=of ki21] {Id};
+                \node [int]  (ki23) [node distance=1.5cm and -1cm,below=of ki22] {UId};
+                \node [int]  (ki24) [node distance=1.5cm and -1cm,below=of ki23] {(UId,Num)};
+                \node [int]  (ki3)  [node distance=1.5cm and -1cm, below left=of ki24] {direction};
+                \node [int]  (ki4)  [node distance=1.5cm and -1cm, below right=of ki24] {(vitesse, temps)};
+                \draw[->] (kp) -- ($(kp.south)+(0,-0.75)$) -| (ki1);
+                \draw[->] (kp) -- ($(kp.south)+(0,-0.75)$) -| (ki2);
+                \draw[->] (ki1) -- (ki11);
+                \draw[->] (ki11) -- (ki12);
+                \draw[->] (ki2) -- (ki21);
+                \draw[->] (ki21) -- (ki22);
+                \draw[->] (ki22) -- (ki23);
+                \draw[->] (ki23) -- (ki24);
+                \draw[->] (ki24) -| ($(ki24.east)+(1,1)$) |- (ki21);
+                \draw[->] (ki24) -- ($(ki24.south)+(0,-0.75)$) -| (ki3);
+                \draw[->] (ki24) -- ($(ki24.south)+(0,-0.75)$) -| (ki4);
+        \end{tikzpicture}
+        \caption{Déroulement des communications}
+        \label{fig:Comm}
+\end{figure}
+
+
+\end{document}
