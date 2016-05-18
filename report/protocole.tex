@@ -85,6 +85,8 @@ Le reste des robots obéissent aux règles ci-dessous :
         \item Avancer en fonction de l'ordre reçu et de leur position dans la formation
 \end{itemize}
 
+\subsection{Format de communication}
+
 \begin{figure}[!h]
         \centering
         \begin{tabular}{|M{1cm}|M{1cm}|lll}
@@ -98,7 +100,19 @@ Le reste des robots obéissent aux règles ci-dessous :
         \end{tabular}
         \caption{Modèle de message}\label{fig:Mesg}
 \end{figure}
-
+Le format de communication se présente comme une trame qui possède une partie fixe et variable avec les éléments suivants :
+\begin{itemize}
+        \item \textit{0 0} : début de la trame ;
+        \item \textit{1} : type de trame ;
+        \item \textit{len} : taille de la trame ;
+        \item \textit{CRC} : Cyclic redundancy check, somme de tous les bits de la trame (CRC comprit) ;
+        \item \textit{...} : corps du message ;
+        \item \textit{end  end} : fin de la trame ;
+\end{itemize}
+La trame fait une taille de 32 octets.
+\newpage
+\subsection{Déroulement des communications}
+Le schéma des communications commence toujours par un robot qui envoie "chef", ensuite en fonction de la réponse qu'il reçoit, les communications empruntent une branche de l'arbre des communications.
 \begin{figure}[!h]
         \centering
         \begin{tikzpicture}[
