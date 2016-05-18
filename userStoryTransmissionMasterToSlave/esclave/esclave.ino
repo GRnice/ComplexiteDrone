@@ -66,9 +66,9 @@ int recv(int* receiver) // fct de reception
     // Message with a good checksum received, dump it.
     for (int i = 0 ; i < buflen ; i++)
     {
-      if (i == 0)
+      if (i == 0) // le premier element contient l'ORDRE
       {
-        *receiver = (int) buf[0];
+        *receiver = (int) buf[0]; // receiver est un pointeur sur 'codeRecu'
       }
       
       message[i] = buf[i];
@@ -87,27 +87,31 @@ void left(){
   Serial.println("turn left");
 }
 
-void right(){
+void right()
+{
   myStop();
   motorLeft->run(BACKWARD);
   motorRight->run(FORWARD);
   Serial.println("turn right");
 }
 
-void forward(){
+void forward()
+{
   motorLeft->run(FORWARD);
   motorRight->run(BACKWARD);
   Serial.println("forward");
 }
 
-void backward(){
+void backward()
+{
   motorLeft->run(BACKWARD);
   motorRight->run(FORWARD);
   Serial.println("backward");
 }
 
 
-void myStop(){
+void myStop()
+{
   motorLeft->run(RELEASE);
   motorRight->run(RELEASE);
   Serial.println("stop");
@@ -115,9 +119,6 @@ void myStop(){
 
 void loop()
 {
-  //int bcl = 0;
-  //sendMsg("hello");
-  delay(500);
   while(recv(&codeRecu) != 1) // tant que on recoit pas un message
   {
     delay(500); // wait...
@@ -128,6 +129,7 @@ void loop()
         myStop();
         codeRecu = 0;
     }
+    
     else if(codeRecu == FORW)
     {
       forward();
@@ -150,16 +152,7 @@ void loop()
       myStop();
       codeRecu = 0;
      }
-     
 
-
-    /*if (bcl == 3)
-    {
-      //sendMsg("hello"); // timeout , on renvoi un message
-      Serial.println("retry");
-      bcl = -1;
-    }
-    bcl++;*/
   }
   Serial.println("recu!!"); // message recu
 }
