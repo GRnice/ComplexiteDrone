@@ -94,7 +94,7 @@ Le reste des robots obéissent aux règles ci-dessous :
                 0 & 0 &  &  &  \\ \cline{1-2}
                 1 & len &  &  &  \\ \cline{1-2}
                 \multicolumn{2}{|c|}{CRC} &  &  &  \\ \cline{1-2}
-                \multicolumn{2}{|c|}{\multirow{2}{*}{...}} &  &  &  \\
+                \multicolumn{2}{|c|}{\multirow{2}{*}{\ldots}} &  &  &  \\
                 \multicolumn{2}{|c|}{} &  &  &  \\ \cline{1-2}
                 end & end &  &  &  \\ \cline{1-2}
         \end{tabular}
@@ -105,31 +105,38 @@ Le format de communication se présente comme une trame qui possède une partie 
         \item \textit{0 0} : début de la trame ;
         \item \textit{1} : type de trame ;
         \item \textit{len} : taille de la trame ;
-        \item \textit{CRC} : Cyclic redundancy check, somme de tous les bits de la trame (CRC comprit) ;
-        \item \textit{...} : corps du message ;
+        \item \textit{CRC} : Cyclic redundancy check, XOR sur chaque niveau de la trame (hors CRC) ;
+        \item \textit{\ldots} : corps du message ;
         \item \textit{end  end} : fin de la trame ;
 \end{itemize}
 La trame fait une taille de 32 octets.
+
+%- communication reçu envoyé
+%- précision des timeout
+%- remplacement des CRC par des XOR niveau par niveau
+%- changer couleur arbre communication
 \newpage
 \subsection{Déroulement des communications}
 Le schéma des communications commence toujours par un robot qui envoie "chef", ensuite en fonction de la réponse qu'il reçoit, les communications empruntent une branche de l'arbre des communications.
+Les cases bleus sont les messages envoyés et les cases rouges sont les messages reçu par le robot.
 \begin{figure}[!h]
         \centering
         \begin{tikzpicture}[
                 >=latex',
                 auto
                 ]
-                \node [intg] (kp)  {chef};
-                \node [int]  (ki1) [node distance=1.5cm and -1cm,below left=of kp] {Id};
-                \node [int]  (ki11) [node distance=1.5cm and -1cm,below =of ki1] {UId};
-                \node [int]  (ki12) [node distance=1.5cm and -1cm,below =of ki11] {(UId,Num)};
-                \node [int]  (ki2) [node distance=1.5cm and -1cm,below right=of kp] {0};
-                \node [int]  (ki21) [node distance=1.5cm and -1cm,below=of ki2] {chef};
-                \node [int]  (ki22) [node distance=1.5cm and -1cm,below=of ki21] {Id};
-                \node [int]  (ki23) [node distance=1.5cm and -1cm,below=of ki22] {UId};
-                \node [int]  (ki24) [node distance=1.5cm and -1cm,below=of ki23] {(UId,Num)};
-                \node [int]  (ki3)  [node distance=1.5cm and -1cm, below left=of ki24] {direction};
-                \node [int]  (ki4)  [node distance=1.5cm and -1cm, below right=of ki24] {(vitesse, temps)};
+                \node [intg] (kp)  [draw=blue] {chef};
+                \node [int]  (ki1) [node distance=1.5cm and -1cm,draw=red,below left=of kp] {Id};
+                \node [int]  (ki11) [node distance=1.5cm and -1cm,draw=blue,below =of ki1] {UId};
+                \node [int]  (ki12) [node distance=1.5cm and -1cm,draw=red,below =of ki11] {(UId,Num)};
+                \node [int]  (ki2) [node distance=1.5cm and -1cm,draw=red,below right=of kp,label=right:\& timeout > 10sec] {0};
+                eroiejg
+                \node [int]  (ki21) [node distance=1.5cm and -1cm,draw=red,below=of ki2] {chef};
+                \node [int]  (ki22) [node distance=1.5cm and -1cm,draw=blue,below=of ki21, ] {Id};
+                \node [int]  (ki23) [node distance=1.5cm and -1cm,draw=red,below=of ki22] {UId};
+                \node [int]  (ki24) [node distance=1.5cm and -1cm,draw=blue,below=of ki23] {(UId,Num)};
+                \node [int]  (ki3)  [node distance=1.5cm and -1cm,draw=blue,below left=of ki24] {direction};
+                \node [int]  (ki4)  [node distance=1.5cm and -1cm,draw=blue,below right=of ki24] {(vitesse, temps)};
                 \draw[->] (kp) -- ($(kp.south)+(0,-0.75)$) -| (ki1);
                 \draw[->] (kp) -- ($(kp.south)+(0,-0.75)$) -| (ki2);
                 \draw[->] (ki1) -- (ki11);
@@ -139,12 +146,27 @@ Le schéma des communications commence toujours par un robot qui envoie "chef", 
                 \draw[->] (ki22) -- (ki23);
                 \draw[->] (ki23) -- (ki24);
                 \draw[->] (ki24) -| ($(ki24.east)+(1,1)$) |- (ki21);
+                \node [] [node distance=1cm, right=of ki22]{\& timeout > 2min};
                 \draw[->] (ki24) -- ($(ki24.south)+(0,-0.75)$) -| (ki3);
                 \draw[->] (ki24) -- ($(ki24.south)+(0,-0.75)$) -| (ki4);
+
+                \begin{scope}[
+                        node distance=1em and 1em,
+                        ]
+                        \node[draw=red,right=-8cm of ki24.west, text opacity=0, label=right:message reçu] (H) {sdgr\newline dfsf};
+                        \node[draw=blue,below=of H, text opacity=0, label=right:message envoyé] (A1) {sdgr\newline dfsf};
+                        \path let
+                        \p2=(H.west),
+                        \p1=(A1.east)
+                        in
+                        node[align=center,text width=\x1-\x2,anchor=south west,inner sep=0pt]
+                        (title)
+                        at ([yshift=5pt]H.north west)
+                        {Légende};
+                \end{scope}
         \end{tikzpicture}
-        \caption{Déroulement des communications}
+        \caption{Déroulement des communications du point de vue d'un robot}
         \label{fig:Comm}
 \end{figure}
-
 
 \end{document}
