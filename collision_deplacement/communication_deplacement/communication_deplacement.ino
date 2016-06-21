@@ -186,7 +186,7 @@ void go(uint32_t cm1, uint32_t cm2, uint32_t cm3) { // procédure master
     if (cm1>distance_min & cm2>distance_min & cm3>distance_min)
     {
       deplacement_avant();
-      com.marche_avant();
+      com.marche_avant(100);
     }
     else
     {
