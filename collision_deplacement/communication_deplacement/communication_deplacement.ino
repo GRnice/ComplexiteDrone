@@ -41,19 +41,8 @@ void rotation_droite()
   myMotor1->run(FORWARD);
   myMotor2->run(BACKWARD);
 
- // for (i=155; i<255; i++)
-  //{
-    myMotor1->setSpeed(150);
-    myMotor2->setSpeed(150);
- // }
-  //for (i=255; i!=155; i--)
-  //{
-   // myMotor1->setSpeed(i);
-    //myMotor2->setSpeed(i);
-  //}
-  delay(500);
-    myMotor1->run(RELEASE);
-    myMotor2->run(RELEASE);
+  myMotor1->setSpeed(150);
+  myMotor2->setSpeed(150);
 }
 
 void rotation_gauche()
@@ -62,19 +51,8 @@ void rotation_gauche()
   myMotor1->run(BACKWARD);
   myMotor2->run(FORWARD);
 
-  //for (i=155; i<255; i++)
-  //{
-    myMotor1->setSpeed(150);
-    myMotor2->setSpeed(150);
-  //}
-  //for (i=255; i!=155; i--)
-  //{
-   // myMotor1->setSpeed(i);
-    //myMotor2->setSpeed(i);
-  //}
-  delay(500);
-    myMotor1->run(RELEASE);
-    myMotor2->run(RELEASE);
+  myMotor1->setSpeed(150);
+  myMotor2->setSpeed(150);
 }
 
 void deplacement_avant(uint32_t range)
@@ -82,20 +60,8 @@ void deplacement_avant(uint32_t range)
   uint8_t i;
   myMotor1->run(FORWARD);
   myMotor2->run(FORWARD);
-
-  //for (i=155; i<255; i++)
-  //{
-    myMotor1->setSpeed((uint32_t)(150 * range / 100));
-    myMotor2->setSpeed((uint32_t)(150 * range / 100));
-  //}
-  //for (i=255; i!=155; i--)
-  //{
-    //myMotor1->setSpeed(i);
-    //myMotor2->setSpeed(i);
-  //}
-  delay(500);
-    myMotor1->run(RELEASE);
-    myMotor2->run(RELEASE);
+  myMotor1->setSpeed((uint32_t)(150 * range / 100));
+  myMotor2->setSpeed((uint32_t)(150 * range / 100));
 }
 
 void deplacement_droite(uint32_t range)
@@ -104,19 +70,8 @@ void deplacement_droite(uint32_t range)
   myMotor1->run(FORWARD);
   myMotor2->run(FORWARD);
 
-  //for (i=155; i<255; i++)
-  //{
-    myMotor1->setSpeed((uint32_t)(100 * range / 100));
-    myMotor2->setSpeed((uint32_t)(200 * range / 100));
-  //}
-  //for (i=255; i!=155; i--)
-  //{
-    //myMotor1->setSpeed(i);
-    //myMotor2->setSpeed(i);
-  //}
-  delay(500);
-    myMotor1->run(RELEASE);
-    myMotor2->run(RELEASE);
+  myMotor1->setSpeed((uint32_t)(100 * range / 100));
+  myMotor2->setSpeed((uint32_t)(200 * range / 100));
 }
 
 void deplacement_gauche(uint32_t range)
@@ -125,19 +80,12 @@ void deplacement_gauche(uint32_t range)
   myMotor1->run(FORWARD);
   myMotor2->run(FORWARD);
 
-  //for (i=155; i<255; i++)
-  //{
-    myMotor1->setSpeed((uint32_t)(200 * range / 100));
-    myMotor2->setSpeed((uint32_t)(100 * range / 100));
-  //}
-  //for (i=255; i!=155; i--)
-  //{
-    //myMotor1->setSpeed(i);
-    //myMotor2->setSpeed(i);
-  //}
+  myMotor1->setSpeed((uint32_t)(200 * range / 100));
+  myMotor2->setSpeed((uint32_t)(100 * range / 100));
+
   delay(500);
-    myMotor1->run(RELEASE);
-    myMotor2->run(RELEASE);
+  myMotor1->run(RELEASE);
+  myMotor2->run(RELEASE);
 }
 
 void deplacement_arriere()
@@ -146,19 +94,8 @@ void deplacement_arriere()
   myMotor1->run(BACKWARD);
   myMotor2->run(BACKWARD);
 
-  //for (i=155; i<255; i++)
-  //{
-    myMotor1->setSpeed(150);
-    myMotor2->setSpeed(150);
- // }
-  //for (i=255; i!=155; i--)
- // {
-   // myMotor1->setSpeed(i);
-   // myMotor2->setSpeed(i);
-  //}
-  delay(500);
-    myMotor1->run(RELEASE);
-    myMotor2->run(RELEASE);
+  myMotor1->setSpeed(150);
+  myMotor2->setSpeed(150);
 }
 
 void setup() {
