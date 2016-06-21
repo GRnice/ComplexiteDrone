@@ -77,7 +77,7 @@ void rotation_gauche()
     myMotor2->run(RELEASE);
 }
 
-void deplacement_avant()
+void deplacement_avant(uint32_t range)
 {
   uint8_t i;
   myMotor1->run(FORWARD);
@@ -85,8 +85,8 @@ void deplacement_avant()
 
   //for (i=155; i<255; i++)
   //{
-    myMotor1->setSpeed(150);
-    myMotor2->setSpeed(150);
+    myMotor1->setSpeed((uint32_t)(150 * range / 100));
+    myMotor2->setSpeed((uint32_t)(150 * range / 100));
   //}
   //for (i=255; i!=155; i--)
   //{
@@ -98,7 +98,7 @@ void deplacement_avant()
     myMotor2->run(RELEASE);
 }
 
-void deplacement_droite()
+void deplacement_droite(uint32_t range)
 {
   uint8_t i;
   myMotor1->run(FORWARD);
@@ -106,8 +106,8 @@ void deplacement_droite()
 
   //for (i=155; i<255; i++)
   //{
-    myMotor1->setSpeed(100);
-    myMotor2->setSpeed(200);
+    myMotor1->setSpeed((uint32_t)(100 * range / 100));
+    myMotor2->setSpeed((uint32_t)(200 * range / 100));
   //}
   //for (i=255; i!=155; i--)
   //{
@@ -119,7 +119,7 @@ void deplacement_droite()
     myMotor2->run(RELEASE);
 }
 
-void deplacement_gauche()
+void deplacement_gauche(uint32_t range)
 {
   uint8_t i;
   myMotor1->run(FORWARD);
@@ -127,8 +127,8 @@ void deplacement_gauche()
 
   //for (i=155; i<255; i++)
   //{
-    myMotor1->setSpeed(200);
-    myMotor2->setSpeed(100);
+    myMotor1->setSpeed((uint32_t)(200 * range / 100));
+    myMotor2->setSpeed((uint32_t)(100 * range / 100));
   //}
   //for (i=255; i!=155; i--)
   //{
@@ -182,60 +182,64 @@ void setup() {
 }
 
 void go(uint32_t cm1, uint32_t cm2, uint32_t cm3) { // procédure master
-  if(cm1>30|cm2>30|cm3>30)
+  uint32_t distance_min = 60;
+
+  if(cm1>distance_min | cm2>distance_min | cm3>distance_min)
   {
-    if (cm2>30)
+    if (cm1>distance_min & cm2>distance_min & cm3>distance_min)
     {
       deplacement_avant();
       com.marche_avant();
     }
     else
     {
-      if((cm1>cm2) & (cm1>cm3))
-      {
+      if((cm1>cm2) & (cm1>cm3)) {
         com.stop();
         rotation_droite();
-      }
-
-      if((cm3>cm1) & (cm3>cm2))
-      {
-        com.stop()
+      } else if((cm3>cm1) & (cm3>cm2)) {
+        com.stop();
+        rotation_gauche();
+      } else {
+        com.stop();
         rotation_gauche();
       }
     }
   }
-  // else
-  // {
-  //   deplacement_arriere();
-  // }
+  else {
+    com.stop();
+    rotation_gauche();
+  }
   myMotor1->run(RELEASE);
   myMotor2->run(RELEASE);
 }
 
-void suivre(uint32_t cm1, uint32_t cm2, uint32_t cm3) { // procédure esclave
-  if(cm1>30|cm2>30|cm3>30)
-  {
-    if (cm2>30)
-    {
-      deplacement_avant();
-    }
-    else
-    {
-      if((cm1>cm2) & (cm1>cm3))
-      {
-        deplacement_gauche();
-      }
+uint32_t calcule_pourcentage_vitesse(uint32_t cm, uint32_t max, uint32_t min) {
+  if(cm >= max) {
+    return 100;
+  } else if(cm <= min) {
+    return 0;
+  } else {
+    return (uint32_t)(cm - min * 100 / (max - min));
+  }
+}
 
-      if((cm3>cm1) & (cm3>cm2))
-      {
-        deplacement_droite();
-      }
+void suivre(uint32_t cm1, uint32_t cm2, uint32_t cm3) { // procédure esclave
+  uint32_t distance_min = 5;
+  uint32_t distance_max = 30;
+
+  if (cm2<cm1 && cm2<cm3) {
+    deplacement_avant(calcule_pourcentage_vitesse(cm2, distance_max, distance_min));
+  }
+  else {
+    if((cm1<cm2) & (cm1<cm3)) {
+      deplacement_gauche(calcule_pourcentage_vitesse(cm1, distance_max, distance_min));
+    }
+
+    if((cm3<cm1) & (cm3<cm2)) {
+      deplacement_droite(calcule_pourcentage_vitesse(cm3, distance_max, distance_min));
     }
   }
-  else
-  {
-    deplacement_arriere();
-  }
+
   myMotor1->run(RELEASE);
   myMotor2->run(RELEASE);
 }
