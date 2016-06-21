@@ -172,9 +172,6 @@ void setup() {
   myMotor1->setSpeed(150);
   myMotor2->setSpeed(150);
 
-  myMotor1->run(FORWARD);
-  myMotor2->run(FORWARD);
-
   myMotor1->run(RELEASE);
   myMotor2->run(RELEASE);
 
@@ -209,6 +206,11 @@ void go(uint32_t cm1, uint32_t cm2, uint32_t cm3) { // procédure master
     com.stop();
     rotation_gauche();
   }
+  myMotor1->run(RELEASE);
+  myMotor2->run(RELEASE);
+}
+
+void arret() {
   myMotor1->run(RELEASE);
   myMotor2->run(RELEASE);
 }
@@ -312,7 +314,7 @@ void loop()
       }
       case ETAT_STOP :
       {
-        // TODO : rien
+        arret();
         break;
       }
     }
