@@ -9,9 +9,10 @@
 #include <Wire.h>
 #include <Adafruit_MotorShield.h>
 #include "utility/Adafruit_PWMServoDriver.h"
-#include <com.cpp>
+#include "com.h"
 
-enum {
+enum
+{
   ETAT_INIT,
   ETAT_STOP,
   ETAT_GO
