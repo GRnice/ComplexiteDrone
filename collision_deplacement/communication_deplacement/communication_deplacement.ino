@@ -187,16 +187,19 @@ void go(uint32_t cm1, uint32_t cm2, uint32_t cm3) { // procédure master
     if (cm2>30)
     {
       deplacement_avant();
+      com.marche_avant();
     }
     else
     {
       if((cm1>cm2) & (cm1>cm3))
       {
+        com.stop();
         rotation_droite();
       }
 
       if((cm3>cm1) & (cm3>cm2))
       {
+        com.stop()
         rotation_gauche();
       }
     }
