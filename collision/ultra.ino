@@ -34,7 +34,7 @@ const uint8_t echoPin3 = 8;
 Com com;
 uint8_t etat = ETAT_INIT;
 
-void deplacement_droite()
+void rotation_droite()
 {
   uint8_t i;
   myMotor1->run(FORWARD);
@@ -55,7 +55,7 @@ void deplacement_droite()
     myMotor2->run(RELEASE);
 }
 
-void deplacement_gauche()
+void rotation_gauche()
 {
   uint8_t i;
   myMotor1->run(BACKWARD);
@@ -86,6 +86,48 @@ void deplacement_avant()
   //{
     myMotor1->setSpeed(150);
     myMotor2->setSpeed(150);
+  //}
+  //for (i=255; i!=155; i--)
+  //{
+    //myMotor1->setSpeed(i);
+    //myMotor2->setSpeed(i);
+  //}
+  delay(500);
+    myMotor1->run(RELEASE);
+    myMotor2->run(RELEASE);
+}
+
+void deplacement_droite()
+{
+  uint8_t i;
+  myMotor1->run(FORWARD);
+  myMotor2->run(FORWARD);
+
+  //for (i=155; i<255; i++)
+  //{
+    myMotor1->setSpeed(100);
+    myMotor2->setSpeed(200);
+  //}
+  //for (i=255; i!=155; i--)
+  //{
+    //myMotor1->setSpeed(i);
+    //myMotor2->setSpeed(i);
+  //}
+  delay(500);
+    myMotor1->run(RELEASE);
+    myMotor2->run(RELEASE);
+}
+
+void deplacement_gauche()
+{
+  uint8_t i;
+  myMotor1->run(FORWARD);
+  myMotor2->run(FORWARD);
+
+  //for (i=155; i<255; i++)
+  //{
+    myMotor1->setSpeed(200);
+    myMotor2->setSpeed(100);
   //}
   //for (i=255; i!=155; i--)
   //{
@@ -138,35 +180,61 @@ void setup() {
   com_setup();
 }
 
-void go(uint32_t cm1, uint32_t cm2, uint32_t cm3) {
+void go(uint32_t cm1, uint32_t cm2, uint32_t cm3) { // procédure master
   if(cm1>30|cm2>30|cm3>30)
   {
-  if (cm2>30)
-  {
-   deplacement_arriere();
-  }
-  else
-  {
-  if((cm1>cm2) & (cm1>cm3))
-  {
-    deplacement_droite();
-  }
+    if (cm2>30)
+    {
+      deplacement_avant();
+    }
+    else
+    {
+      if((cm1>cm2) & (cm1>cm3))
+      {
+        rotation_droite();
+      }
 
-  if((cm3>cm1) & (cm3>cm2))
-  {
-    deplacement_gauche();
+      if((cm3>cm1) & (cm3>cm2))
+      {
+        rotation_gauche();
+      }
+    }
   }
-  }
-  }
-  else
-  {
-  deplacement_avant();
-  }
+  // else
+  // {
+  //   deplacement_arriere();
+  // }
   myMotor1->run(RELEASE);
   myMotor2->run(RELEASE);
 }
 
-// TODO : void suivre(uint32_t cm1, uint32_t cm2, uint32_t cm3)
+void suivre(uint32_t cm1, uint32_t cm2, uint32_t cm3) { // procédure esclave
+  if(cm1>30|cm2>30|cm3>30)
+  {
+    if (cm2>30)
+    {
+      deplacement_avant();
+    }
+    else
+    {
+      if((cm1>cm2) & (cm1>cm3))
+      {
+        deplacement_gauche();
+      }
+
+      if((cm3>cm1) & (cm3>cm2))
+      {
+        deplacement_droite();
+      }
+    }
+  }
+  else
+  {
+    deplacement_arriere();
+  }
+  myMotor1->run(RELEASE);
+  myMotor2->run(RELEASE);
+}
 
 void loop()
 {
