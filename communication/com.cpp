@@ -5,7 +5,6 @@
 #include <cstdlib>
 #include "com.h"
 
-#define TAILLE_TRAME_MAX 32
 #define TIMEOUT_CHEF 2000 //secondesss
 #define TIMEOUT_INIT 60000 //secondes
 
@@ -76,7 +75,7 @@ void Com::init() {
                 recvMsg(buffer); // Lance recv en boucle jusqu'au timeout
                 end = millis();
 
-                if (end - start >= TIMEOUT_CHEF) break;
+                if (end - start >= TIMEOUT_INIT) break;
             } while (!strlen(buffer));
             end = millis();
 
@@ -85,7 +84,7 @@ void Com::init() {
             if(header.type == TYPE_CHEF_REQ) {
                 chefReponse(getID(buffer));
             }
-        } while (end - start < TIMEOUT_CHEF);
+        } while (end - start < TIMEOUT_INIT);
     }
 }
 
