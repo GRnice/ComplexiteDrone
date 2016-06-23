@@ -108,32 +108,19 @@ Le reste des robots obéissent aux règles ci-dessous :
 
 \begin{figure}[!h]
         \centering
-        \begin{tabular}{|M{1cm}|M{1cm}|lll}
-                \cline{1-2}
-                0 & 0 &  &  &  \\ \cline{1-2}
-                1 & len &  &  &  \\ \cline{1-2}
-                \multicolumn{2}{|c|}{CRC} &  &  &  \\ \cline{1-2}
-                \multicolumn{2}{|c|}{\multirow{2}{*}{\ldots}} &  &  &  \\
-                \multicolumn{2}{|c|}{} &  &  &  \\ \cline{1-2}
-                end & end &  &  &  \\ \cline{1-2}
+        \begin{tabular}{|l|l|l|}
+                \hline
+                num\_de\_drone & type\_de\_message & contenu \\ \hline
         \end{tabular}
         \caption{Modèle de message}\label{fig:Mesg}
 \end{figure}
 Le format de communication se présente comme une trame qui possède une partie fixe et variable avec les éléments suivants :
 \begin{itemize}
-        \item \textit{0 0} : début de la trame ;
-        \item \textit{1} : type de trame ;
-        \item \textit{len} : taille de la trame ;
-        \item \textit{CRC} : Cyclic redundancy check, XOR sur chaque niveau de la trame (hors CRC) ;
-        \item \textit{\ldots} : corps du message ;
-        \item \textit{end  end} : fin de la trame ;
+        \item \textit{num\_de\_drone}, l'identifiant du robot ;
+        \item  \textit{type\_de\_message}, le type de message envoyé ;
+\item \textit{contenu}, le contenu du message.
 \end{itemize}
-La trame fait une taille de 32 octets.
 
-%- communication reçu envoyé
-%- précision des timeout
-%- remplacement des CRC par des XOR niveau par niveau
-%- changer couleur arbre communication
 \newpage
 \subsection{Déroulement des communications}
 Le schéma des communications commence toujours par un robot qui envoie "chef", ensuite en fonction de la réponse qu'il reçoit, les communications empruntent une branche de l'arbre des communications.
@@ -165,7 +152,7 @@ Les cases bleus sont les messages envoyés et les cases rouges sont les messages
                 \draw[->] (ki22) -- (ki23);
                 \draw[->] (ki23) -- (ki24);
                 \draw[->] (ki24) -| ($(ki24.east)+(1,1)$) |- (ki21);
-                \node [] [node distance=1cm, right=of ki22]{\& timeout > 2min};
+                \node [] [node distance=1cm, right=of ki22]{\& timeout > 1min};
                 \draw[->] (ki24) -- ($(ki24.south)+(0,-0.75)$) -| (ki3);
                 \draw[->] (ki24) -- ($(ki24.south)+(0,-0.75)$) -| (ki4);
 
@@ -200,7 +187,7 @@ Le code à été implémenté sous forme de machine à états, avec les trois é
 Le robot démarre dans l'état \textit{ETAT\_INIT}, dans lequel il participe à l'élection du chef. À la fin de la phase d'initialisation, il passe dans l'état \textit{ETAT\_GO}.
 Il est important de noter que la phase d'initialisation du chef est la plus longue, en effet il partira lorsque l'ensemble des suiveurs sera pret et en position, à une distance minimale de leur prédécesseur.
 
-Dès que le chef détecte un mouvement, il envoie un message \textit{stop}, en attendant qu'il choisisse la manière de l'éviter, les suiveurs passent à l'état \textit{ETAT\_STOP} et leur moteur s'arrête.
+Dès que le chef détecte un obstacle, il envoie un message \textit{stop}, en attendant qu'il choisisse la manière de l'éviter, les suiveurs passent à l'état \textit{ETAT\_STOP} et leur moteur s'arrête.
 Quand le chef trouve une direction libre, il envoie un message aux suiveurs pour qu'ils passent à l'état \textit{ETAT\_GO}.
 
 La procédure \textit{go} est elle aussi implémentée à partir d'une machine à états. Ainsi il n'est plus nécessaire pour le chef d'indiquer à chaque tour de boucle aux suiveurs de rester dans l'état \textit{ETAT\_GO} et de continuer à avancer. Cela libère donc du temps de communication et réduit la redondance des messages.

@@ -1,0 +1,560 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>​Protocole de déplacement pour robots à base d’Arduino: Référence de la classe Com</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">​Protocole de déplacement pour robots à base d’Arduino
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="annotated.html"><span>Liste&#160;des&#160;classes</span></a></li>
+      <li><a href="classes.html"><span>Index&#160;des&#160;classes</span></a></li>
+      <li><a href="functions.html"><span>Membres&#160;de&#160;classe</span></a></li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Fonctions membres publiques</a> &#124;
+<a href="#pri-methods">Fonctions membres privées</a> &#124;
+<a href="#pri-attribs">Attributs privés</a> &#124;
+<a href="class_com-members.html">Liste de tous les membres</a>  </div>
+  <div class="headertitle">
+<div class="title">Référence de la classe Com</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>Interface de Communication entre les drones.  
+ <a href="class_com.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="com_8h_source.html">com.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Fonctions membres publiques</h2></td></tr>
+<tr class="memitem:a8fbe9b4470255cd7b3c423333d960c5d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#a8fbe9b4470255cd7b3c423333d960c5d">setup</a> ()</td></tr>
+<tr class="memdesc:a8fbe9b4470255cd7b3c423333d960c5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instancie le driver du communication.  <a href="#a8fbe9b4470255cd7b3c423333d960c5d">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a8fbe9b4470255cd7b3c423333d960c5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a379d24125d8ce96b239e4bcf222bfb5a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#a379d24125d8ce96b239e4bcf222bfb5a">init</a> ()</td></tr>
+<tr class="memdesc:a379d24125d8ce96b239e4bcf222bfb5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialise les ids des drone et permet d'élire un chef.  <a href="#a379d24125d8ce96b239e4bcf222bfb5a">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a379d24125d8ce96b239e4bcf222bfb5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad469e70fc6143255ec3a995c620e6393"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#ad469e70fc6143255ec3a995c620e6393">marche_avant</a> (int vitesse)</td></tr>
+<tr class="memdesc:ad469e70fc6143255ec3a995c620e6393"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie un message pour ordonner d'avancer au drone.  <a href="#ad469e70fc6143255ec3a995c620e6393">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ad469e70fc6143255ec3a995c620e6393"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aceaf1c82397c63bd272d3e5d29e48e23"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#aceaf1c82397c63bd272d3e5d29e48e23">stop</a> ()</td></tr>
+<tr class="memdesc:aceaf1c82397c63bd272d3e5d29e48e23"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ordonne l'arrêt des drone.  <a href="#aceaf1c82397c63bd272d3e5d29e48e23">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aceaf1c82397c63bd272d3e5d29e48e23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac186e333d8d4260e443409df57588def"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#ac186e333d8d4260e443409df57588def">droite</a> ()</td></tr>
+<tr class="memdesc:ac186e333d8d4260e443409df57588def"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ordonne de tourner à droite.  <a href="#ac186e333d8d4260e443409df57588def">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ac186e333d8d4260e443409df57588def"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed83e2c32d868ed733435f29efa57be8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#aed83e2c32d868ed733435f29efa57be8">gauche</a> ()</td></tr>
+<tr class="memdesc:aed83e2c32d868ed733435f29efa57be8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Odonne de tourner à gauche.  <a href="#aed83e2c32d868ed733435f29efa57be8">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aed83e2c32d868ed733435f29efa57be8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22fc1a04b4eff66d5fda59e4e4aac6c9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a22fc1a04b4eff66d5fda59e4e4aac6c9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>com</b> (uint8_t *type)</td></tr>
+<tr class="separator:a22fc1a04b4eff66d5fda59e4e4aac6c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e402ee676eee46ef9e8b2e5d7743dca"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#a1e402ee676eee46ef9e8b2e5d7743dca">isChef</a> ()</td></tr>
+<tr class="memdesc:a1e402ee676eee46ef9e8b2e5d7743dca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de savoit si le drone est le chef.  <a href="#a1e402ee676eee46ef9e8b2e5d7743dca">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a1e402ee676eee46ef9e8b2e5d7743dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Fonctions membres privées</h2></td></tr>
+<tr class="memitem:a54b165c2ee05fb9ec34758a770efa9ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a54b165c2ee05fb9ec34758a770efa9ba"></a>
+RH_ASK&#160;</td><td class="memItemRight" valign="bottom"><b>driver</b> (2000, 13, 12)</td></tr>
+<tr class="separator:a54b165c2ee05fb9ec34758a770efa9ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a111bb868b3aa7c139b8922a59a755508"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#a111bb868b3aa7c139b8922a59a755508">getHeaderMessage</a> (<a class="el" href="structmsg__header__t.html">msg_header_t</a> *header, char *buffer)</td></tr>
+<tr class="memdesc:a111bb868b3aa7c139b8922a59a755508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Extrait le Header du message.  <a href="#a111bb868b3aa7c139b8922a59a755508">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a111bb868b3aa7c139b8922a59a755508"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae97032799b532f097e01637694aaf387"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#ae97032799b532f097e01637694aaf387">sendMsg</a> (char *msg)</td></tr>
+<tr class="memdesc:ae97032799b532f097e01637694aaf387"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie un message en boardcast.  <a href="#ae97032799b532f097e01637694aaf387">Plus de détails...</a><br /></td></tr>
+<tr class="separator:ae97032799b532f097e01637694aaf387"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa72ffe916be18cd9936ceb9af14eb9d4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#aa72ffe916be18cd9936ceb9af14eb9d4">recvMsg</a> (char *buffer)</td></tr>
+<tr class="memdesc:aa72ffe916be18cd9936ceb9af14eb9d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ecoute et reçois les messages la taille du buffer ne doit pas dépasser RH_ASK_MAX_MESSAGE_LEN.  <a href="#aa72ffe916be18cd9936ceb9af14eb9d4">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aa72ffe916be18cd9936ceb9af14eb9d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a286418e70636b70f1036d17cdb34166b"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#a286418e70636b70f1036d17cdb34166b">genID</a> ()</td></tr>
+<tr class="memdesc:a286418e70636b70f1036d17cdb34166b"><td class="mdescLeft">&#160;</td><td class="mdescRight">sert à generé un ID unique qui identifira le drone  <a href="#a286418e70636b70f1036d17cdb34166b">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a286418e70636b70f1036d17cdb34166b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafd0cbb7fb4c4d89992f68505f238520"><td class="memItemLeft" align="right" valign="top">boolean&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#aafd0cbb7fb4c4d89992f68505f238520">chefRequete</a> (int ID, int *num)</td></tr>
+<tr class="memdesc:aafd0cbb7fb4c4d89992f68505f238520"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie un message pour savoir si un chef à déjà était élu, et si ou, récupére le nouvelle ID unique.  <a href="#aafd0cbb7fb4c4d89992f68505f238520">Plus de détails...</a><br /></td></tr>
+<tr class="separator:aafd0cbb7fb4c4d89992f68505f238520"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26e297eb62adf7daed55fa55b1c9b1d5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_com.html#a26e297eb62adf7daed55fa55b1c9b1d5">chefReponse</a> ()</td></tr>
+<tr class="memdesc:a26e297eb62adf7daed55fa55b1c9b1d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">La réponse du chef à chefRequete, contient le nouvelle ID unique.  <a href="#a26e297eb62adf7daed55fa55b1c9b1d5">Plus de détails...</a><br /></td></tr>
+<tr class="separator:a26e297eb62adf7daed55fa55b1c9b1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Attributs privés</h2></td></tr>
+<tr class="memitem:ad4abf0aaa6145af45fec8b2e5feb5d0d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad4abf0aaa6145af45fec8b2e5feb5d0d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>ID</b> = -1</td></tr>
+<tr class="separator:ad4abf0aaa6145af45fec8b2e5feb5d0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c4c5c1661341da04fa7d2ef3c1f6d42"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2c4c5c1661341da04fa7d2ef3c1f6d42"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>num</b> = -1</td></tr>
+<tr class="separator:a2c4c5c1661341da04fa7d2ef3c1f6d42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a828dd7669dc50f582140559d72d580d2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a828dd7669dc50f582140559d72d580d2"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>numAssigne</b> = 1</td></tr>
+<tr class="separator:a828dd7669dc50f582140559d72d580d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a236a20c0f56abc2d7a776b13d41aec94"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a236a20c0f56abc2d7a776b13d41aec94"></a>
+boolean&#160;</td><td class="memItemRight" valign="bottom"><b>chef</b> = false</td></tr>
+<tr class="separator:a236a20c0f56abc2d7a776b13d41aec94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Interface de Communication entre les drones. </p>
+<dl class="section author"><dt>Auteur</dt><dd>Thomas Grillo</dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0</dd></dl>
+<dl class="section date"><dt>Date</dt><dd>juin 2016</dd></dl>
+<p>Contact: <a href="#" onclick="location.href='mai'+'lto:'+'tho'+'ma'+'s.g'+'ri'+'llo'+'@e'+'tu.'+'un'+'ice'+'.f'+'r'; return false;">thoma<span style="display: none;">.nosp@m.</span>s.gr<span style="display: none;">.nosp@m.</span>illo@<span style="display: none;">.nosp@m.</span>etu.<span style="display: none;">.nosp@m.</span>unice<span style="display: none;">.nosp@m.</span>.fr</a> </p>
+
+<p>Définition à la ligne <a class="el" href="com_8h_source.html#l00024">24</a> du fichier <a class="el" href="com_8h_source.html">com.h</a>.</p>
+</div><h2 class="groupheader">Documentation des fonctions membres</h2>
+<a class="anchor" id="a26e297eb62adf7daed55fa55b1c9b1d5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">private void Com::chefReponse </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>La réponse du chef à chefRequete, contient le nouvelle ID unique. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8cpp_source.html#l00046">46</a> du fichier <a class="el" href="com_8cpp_source.html">com.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aafd0cbb7fb4c4d89992f68505f238520"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">private boolean Com::chefRequete </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ID</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>num</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Envoie un message pour savoir si un chef à déjà était élu, et si ou, récupére le nouvelle ID unique. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ID</td><td>: l'ID unique du drone lors de son lancement </td></tr>
+    <tr><td class="paramname">num</td><td>: l'ID unique du drone assignée par le chef </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>boolean true si un chef est déjà élus </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8cpp_source.html#l00013">13</a> du fichier <a class="el" href="com_8cpp_source.html">com.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ac186e333d8d4260e443409df57588def"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">public void Com::droite </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ordonne de tourner à droite. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8cpp_source.html#l00098">98</a> du fichier <a class="el" href="com_8cpp_source.html">com.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aed83e2c32d868ed733435f29efa57be8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">public void Com::gauche </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Odonne de tourner à gauche. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8cpp_source.html#l00105">105</a> du fichier <a class="el" href="com_8cpp_source.html">com.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a286418e70636b70f1036d17cdb34166b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">private unsigned long Com::genID </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>sert à generé un ID unique qui identifira le drone </p>
+<dl class="section return"><dt>Renvoie</dt><dd>unsigned long un nombre compris entre 0 et 30000 </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8h_source.html#l00096">96</a> du fichier <a class="el" href="com_8h_source.html">com.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a111bb868b3aa7c139b8922a59a755508"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">private char Com::getHeaderMessage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structmsg__header__t.html">msg_header_t</a> *&#160;</td>
+          <td class="paramname"><em>header</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Extrait le Header du message. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">header</td><td>: Valeur de retour contenant les information du header </td></tr>
+    <tr><td class="paramname">buffer</td><td>: buffer contenant le massage </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>char </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8h_source.html#l00040">40</a> du fichier <a class="el" href="com_8h_source.html">com.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a379d24125d8ce96b239e4bcf222bfb5a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">public void Com::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initialise les ids des drone et permet d'élire un chef. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8cpp_source.html#l00064">64</a> du fichier <a class="el" href="com_8cpp_source.html">com.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a1e402ee676eee46ef9e8b2e5d7743dca"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">public boolean Com::isChef </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Permet de savoit si le drone est le chef. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>boolean </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8h_source.html#l00181">181</a> du fichier <a class="el" href="com_8h_source.html">com.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad469e70fc6143255ec3a995c620e6393"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">public void Com::marche_avant </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>vitesse</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Envoie un message pour ordonner d'avancer au drone. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">vitesse</td><td>: </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8cpp_source.html#l00083">83</a> du fichier <a class="el" href="com_8cpp_source.html">com.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aa72ffe916be18cd9936ceb9af14eb9d4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">private uint8_t Com::recvMsg </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>buffer</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Ecoute et reçois les messages la taille du buffer ne doit pas dépasser RH_ASK_MAX_MESSAGE_LEN. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>: le buffer au sera stocker le contenue du message reçus </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>uint8_t la taille du contenue du message </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8h_source.html#l00073">73</a> du fichier <a class="el" href="com_8h_source.html">com.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ae97032799b532f097e01637694aaf387"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">private void Com::sendMsg </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>msg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Envoie un message en boardcast. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>: le contenue du message à envoyer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8h_source.html#l00057">57</a> du fichier <a class="el" href="com_8h_source.html">com.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a8fbe9b4470255cd7b3c423333d960c5d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">public void Com::setup </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Instancie le driver du communication. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8cpp_source.html#l00053">53</a> du fichier <a class="el" href="com_8cpp_source.html">com.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="aceaf1c82397c63bd272d3e5d29e48e23"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">public void Com::stop </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Ordonne l'arrêt des drone. </p>
+<dl class="section return"><dt>Renvoie</dt><dd>void </dd></dl>
+
+<p>Définition à la ligne <a class="el" href="com_8cpp_source.html#l00091">91</a> du fichier <a class="el" href="com_8cpp_source.html">com.cpp</a>.</p>
+
+</div>
+</div>
+<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<li>communication/<a class="el" href="com_8h_source.html">com.h</a></li>
+<li>communication/<a class="el" href="com_8cpp_source.html">com.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>
