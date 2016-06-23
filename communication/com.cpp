@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <string.h>
+#include <time.h>
+#include <uuid/uuid.h>
 #include <RH_ASK.h>
 #include <SPI.h> // Not actualy used but needed to compile
 #include "com.h"
