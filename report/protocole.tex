@@ -7,6 +7,7 @@
 \usepackage{tkz-graph}
 \usepackage{multirow}
 \usepackage{array}
+\usepackage{listings}
 \newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
 \usepackage{tikz}
@@ -18,10 +19,28 @@
 \tikzstyle{sum}=[draw,shape=circle,inner sep=2pt,text centered,node distance=3.5cm]
 \tikzstyle{summ}=[drawshape=circle,inner sep=4pt,text centered,node distance=3.cm]
 
+\lstset{
+  language=C,                % choose the language of the code
+  numbers=left,                   % where to put the line-numbers
+  stepnumber=1,                   % the step between two line-numbers.
+  numbersep=5pt,                  % how far the line-numbers are from the code
+  backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+  showspaces=false,               % show spaces adding particular underscores
+  showstringspaces=false,         % underline spaces within strings
+  showtabs=false,                 % show tabs within strings adding particular underscores
+  tabsize=2,                      % sets default tabsize to 2 spaces
+  captionpos=b,                   % sets the caption-position to bottom
+  breaklines=true,                % sets automatic line breaking
+  breakatwhitespace=true,         % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                 % show the filename of files included with \lstinputlisting;
+}
+
 \title{%
         Protocole de déplacement pour robots à base d'Arduino\\
-        \large Complexité
+        \large Complexité\\
+        \href{https://github.com/GRnice/ComplexiteDrone}{https://github.com/GRnice/ComplexiteDrone}
 }
+
 \author{%
         M1 IFI/RIF
 }
@@ -32,7 +51,7 @@
 
 %\tableofcontents
 \begin{abstract}
-        Ce document décrit le protocole conçu pour contrôler la formation et le déplacement des robots à base d'Arduino crées durant le cours de complexité.
+        Ce document décrit le travail effectué tant au niveau de la conception de la formation et du protocole de déplacements des robots que de l'implémentation. Il décrit l'évolution possible du projet ainsi que les personnes ayant participés à sa réalisation.
 \end{abstract}
 
 \newpage
@@ -169,4 +188,48 @@ Les cases bleus sont les messages envoyés et les cases rouges sont les messages
         \label{fig:Comm}
 \end{figure}
 
+\section{Implémentation}
+\subsection{Machine à états}
+Le code à été implémenté sous forme de machine à états, avec les trois états suivants :
+\begin{itemize}
+        \item ETAT\_INIT ;
+        \item ETAT\_GO ;
+        \item ETAT\_STOP.
+\end{itemize}
+
+Le robot démarre dans l'état \textit{ETAT\_INIT}, dans lequel il participe à l'élection du chef. À la fin de la phase d'initialisation, il passe dans l'état \textit{ETAT\_GO}.
+Il est important de noter que la phase d'initialisation du chef est la plus longue, en effet il partira lorsque l'ensemble des suiveurs sera pret et en position, à une distance minimale de leur prédécesseur.
+
+Dès que le chef détecte un mouvement, il envoie un message \textit{stop}, en attendant qu'il choisisse la manière de l'éviter, les suiveurs passent à l'état \textit{ETAT\_STOP} et leur moteur s'arrête.
+Quand le chef trouve une direction libre, il envoie un message aux suiveurs pour qu'ils passent à l'état \textit{ETAT\_GO}.
+
+La procédure \textit{go} est elle aussi implémentée à partir d'une machine à états. Ainsi il n'est plus nécessaire pour le chef d'indiquer à chaque tour de boucle aux suiveurs de rester dans l'état \textit{ETAT\_GO} et de continuer à avancer. Cela libère donc du temps de communication et réduit la redondance des messages.
+
+\subsection{Messages}
+Les messages sont envoyés uniquement par le maître (ou chef), seul les esclaves (ou suiveurs) peuvent donc les écouter. Ils sont dans une logique simplex avec un mode de communication en broadcast.
+
+\subsection{Maître}
+Le maître peut effectuer deux actions :
+\begin{itemize}
+        \item Envoyer un message à chaque fois qu'il effectue un mouvement, c'est-à-dire à chqque tour de boucle ;
+        \item Vérifier la réception d'un message à chaque tour de boucle.
+\end{itemize}
+
+\subsection{Esclave}
+L'esclave peut effectuer l'action suivante :
+\begin{itemize}
+        \item Vérifier la réception d'un message à chaque tour de boucle.
+\end{itemize}
+
+\section{Participants}
+\begin{itemize}
+        \item \textbf{Julien Audibert}, réflexions à la base du protocole de communication et conception de la formation en pyramide, code de base de détection et évitement des obstacles ;
+        \item \textbf{Thomas Grillo}, création de la librairie \textit{com}, implémentant le protocole de communication, de la documentation \textit{doxygen}, de l'implémentation en machine à états, co-création des procédures \textit{go} et \textit{suivre}.
+        \item \textbf{Rémy Giangrasso}, auteur de la librairie de communication hardware, débuggage partiel de la librairie \textit{com} ;
+        \item \textbf{Rémy Garcia}, réflexions sur la conception, rédaction du rapport ;
+        \item \textbf{Clément Lavoisier}, code de base de détection et évitement des obstacles ;
+        \item \textbf{Mathias Ellapin}, réflexions sur la conception, co-création des procédures \textit{go} et \textit{suivre} ;
+\end{itemize}
+
+Autres participants : Arthur Finkelstein, Christophe Fagard, Diana Resmerita, Djoé Denne, Dominique Dib, Kévin Caucheteur, Mehdi El Hajami, Mohamed Limam.
 \end{document}
