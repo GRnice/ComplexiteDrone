@@ -1,0 +1,148 @@
+\hypertarget{class_com}{}\section{Com Class Reference}
+\label{class_com}\index{Com@{Com}}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \{ \\*
+{\bfseries T\+Y\+P\+E\+\_\+\+C\+H\+E\+F\+\_\+\+R\+EQ}, 
+{\bfseries T\+Y\+P\+E\+\_\+\+C\+H\+E\+F\+\_\+\+R\+EP}, 
+{\bfseries T\+Y\+P\+E\+\_\+\+A\+V\+A\+NT}, 
+{\bfseries T\+Y\+P\+E\+\_\+\+S\+T\+OP}, 
+\\*
+{\bfseries T\+Y\+P\+E\+\_\+\+D\+R\+O\+I\+TE}, 
+{\bfseries T\+Y\+P\+E\+\_\+\+G\+A\+U\+C\+HE}
+ \}\hypertarget{class_com_ad9a181617aea896ef1ba65c8ed1ea0c3}{}\label{class_com_ad9a181617aea896ef1ba65c8ed1ea0c3}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_com_a8fbe9b4470255cd7b3c423333d960c5d}{setup} ()
+\begin{DoxyCompactList}\small\item\em Instancie le driver du communication. \end{DoxyCompactList}\item 
+void \hyperlink{class_com_a379d24125d8ce96b239e4bcf222bfb5a}{init} ()
+\begin{DoxyCompactList}\small\item\em Initialise les ids des robot et permet d\textquotesingle{}élire un chef. \end{DoxyCompactList}\item 
+void \hyperlink{class_com_ad469e70fc6143255ec3a995c620e6393}{marche\+\_\+avant} (int vitesse)
+\begin{DoxyCompactList}\small\item\em Envoie un message pour ordonner d\textquotesingle{}avancer au robot. \end{DoxyCompactList}\item 
+void \hyperlink{class_com_aceaf1c82397c63bd272d3e5d29e48e23}{stop} ()
+\begin{DoxyCompactList}\small\item\em Ordonne l\textquotesingle{}arrêt des robot. \end{DoxyCompactList}\item 
+void \hyperlink{class_com_ac186e333d8d4260e443409df57588def}{droite} ()
+\begin{DoxyCompactList}\small\item\em Ordonne de tourner à droite. \end{DoxyCompactList}\item 
+void \hyperlink{class_com_aed83e2c32d868ed733435f29efa57be8}{gauche} ()
+\begin{DoxyCompactList}\small\item\em Odonne de tourner à gauche. \end{DoxyCompactList}\item 
+void {\bfseries com} (uint8\+\_\+t $\ast$type)\hypertarget{class_com_a22fc1a04b4eff66d5fda59e4e4aac6c9}{}\label{class_com_a22fc1a04b4eff66d5fda59e4e4aac6c9}
+
+\item 
+bool \hyperlink{class_com_a1e402ee676eee46ef9e8b2e5d7743dca}{is\+Chef} ()
+\begin{DoxyCompactList}\small\item\em Permet de savoit si le robot est le chef. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\index{Com@{Com}!droite@{droite}}
+\index{droite@{droite}!Com@{Com}}
+\subsubsection[{\texorpdfstring{droite()}{droite()}}]{\setlength{\rightskip}{0pt plus 5cm}public void Com\+::droite (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_com_ac186e333d8d4260e443409df57588def}{}\label{class_com_ac186e333d8d4260e443409df57588def}
+
+
+Ordonne de tourner à droite. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Com@{Com}!gauche@{gauche}}
+\index{gauche@{gauche}!Com@{Com}}
+\subsubsection[{\texorpdfstring{gauche()}{gauche()}}]{\setlength{\rightskip}{0pt plus 5cm}public void Com\+::gauche (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_com_aed83e2c32d868ed733435f29efa57be8}{}\label{class_com_aed83e2c32d868ed733435f29efa57be8}
+
+
+Odonne de tourner à gauche. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Com@{Com}!init@{init}}
+\index{init@{init}!Com@{Com}}
+\subsubsection[{\texorpdfstring{init()}{init()}}]{\setlength{\rightskip}{0pt plus 5cm}public void Com\+::init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_com_a379d24125d8ce96b239e4bcf222bfb5a}{}\label{class_com_a379d24125d8ce96b239e4bcf222bfb5a}
+
+
+Initialise les ids des robot et permet d\textquotesingle{}élire un chef. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Com@{Com}!is\+Chef@{is\+Chef}}
+\index{is\+Chef@{is\+Chef}!Com@{Com}}
+\subsubsection[{\texorpdfstring{is\+Chef()}{isChef()}}]{\setlength{\rightskip}{0pt plus 5cm}public boolean Com\+::is\+Chef (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{class_com_a1e402ee676eee46ef9e8b2e5d7743dca}{}\label{class_com_a1e402ee676eee46ef9e8b2e5d7743dca}
+
+
+Permet de savoit si le robot est le chef. 
+
+\begin{DoxyReturn}{Returns}
+boolean 
+\end{DoxyReturn}
+\index{Com@{Com}!marche\+\_\+avant@{marche\+\_\+avant}}
+\index{marche\+\_\+avant@{marche\+\_\+avant}!Com@{Com}}
+\subsubsection[{\texorpdfstring{marche\+\_\+avant(int vitesse)}{marche_avant(int vitesse)}}]{\setlength{\rightskip}{0pt plus 5cm}public void Com\+::marche\+\_\+avant (
+\begin{DoxyParamCaption}
+\item[{int}]{vitesse}
+\end{DoxyParamCaption}
+)}\hypertarget{class_com_ad469e70fc6143255ec3a995c620e6393}{}\label{class_com_ad469e70fc6143255ec3a995c620e6393}
+
+
+Envoie un message pour ordonner d\textquotesingle{}avancer au robot. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em vitesse} & \+: \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Com@{Com}!setup@{setup}}
+\index{setup@{setup}!Com@{Com}}
+\subsubsection[{\texorpdfstring{setup()}{setup()}}]{\setlength{\rightskip}{0pt plus 5cm}public void Com\+::setup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_com_a8fbe9b4470255cd7b3c423333d960c5d}{}\label{class_com_a8fbe9b4470255cd7b3c423333d960c5d}
+
+
+Instancie le driver du communication. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\index{Com@{Com}!stop@{stop}}
+\index{stop@{stop}!Com@{Com}}
+\subsubsection[{\texorpdfstring{stop()}{stop()}}]{\setlength{\rightskip}{0pt plus 5cm}public void Com\+::stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{class_com_aceaf1c82397c63bd272d3e5d29e48e23}{}\label{class_com_aceaf1c82397c63bd272d3e5d29e48e23}
+
+
+Ordonne l\textquotesingle{}arrêt des robot. 
+
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/remy/\+Documents/\+Master/\+Semestre\+\_\+2/\+Complexite/\+Complexite\+Drone/communication/com.\+h\item 
+/home/remy/\+Documents/\+Master/\+Semestre\+\_\+2/\+Complexite/\+Complexite\+Drone/communication/com.\+cpp\end{DoxyCompactItemize}
