@@ -57,6 +57,14 @@ class Com
   boolean chefRequete(int ID, int * num);
   void chefReponse();
 public:
+
+  enum {
+    TYPE_AVANT,
+    TYPE_STOP,
+    TYPE_DROITE,
+    TYPE_GAUCHE
+  }
+
   Com();
 
   void setup();
@@ -65,7 +73,7 @@ public:
   void stop();
   void droite();
   void gauche();
-  void com(uint8_t * etat);
+  void com(uint8_t * type);
 
   boolean isChef() { return chef; }
 }
